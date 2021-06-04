@@ -1,6 +1,6 @@
 import React from "react";
 
-function Index() {
+function Main() {
 
   return (
     <div className="jumbotron jumbotron-fluid text-center bg-info border-bottom border-danger text-white">
@@ -12,4 +12,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Main;

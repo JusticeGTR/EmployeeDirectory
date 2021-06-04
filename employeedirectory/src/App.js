@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Index from "./components/Index";
-import Search from "./components/pages/Search";
+import Main from "./pages/Main";
+import Search from "./pages/Search";
 
 class App extends Component {
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Index />
+          <Main />
           <Route exact path="/search" component={Search} />
         </div>
       </Router>
