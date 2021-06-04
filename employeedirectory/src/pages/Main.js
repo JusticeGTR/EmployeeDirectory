@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import moment from "moment";
+import Header from "../components/Header";
+import Search from "../components/Search";
+import TableHeader from "../components/TableHeader"
+import EmpTable from "../components/EmpTable"
 
 class Main extends Component {
   state = {
@@ -20,14 +23,15 @@ class Main extends Component {
 
 
   handleInputChange = event => {
+    console.log("input change!!")
     const value = event.target.value;
-    if(value === ""){
+    if (value === "") {
       this.setState({
         searchQuery: ""
       })
     }
     const filteredEmployees = this.state.employees.filter(employee => employee.name.last.toLowerCase().includes(value.toLowerCase()) || employee.name.first.toLowerCase().includes(value.toLowerCase()))
-    console.log("employees selected", value);
+    console.log(event.target.value);
     this.setState({
       searchQuery: filteredEmployees
     });
@@ -42,44 +46,28 @@ class Main extends Component {
   render() {
     console.log("search component rendered!")
     console.log(this.state.employees)
+    console.log(this.state.searchQuery)
     return (
       <>
-        <div className="jumbotron jumbotron-fluid text-center bg-info border-bottom border-danger text-white">
-          <div className="container">
-            <h1 className="display-4">Employee Directory</h1>
-            <p className="lead">Click on carrots to filter by heading or use the search box to narrow your results</p>
-          </div>
-        </div>
-
-        <div className="justify-content-center mx-auto">
-
-          <input onChange={this.handleInputChange} placeholder="Search" />
-
-          <table className="table">
-            <thead className="thead-light">
-              <tr>
-                <th scope="col-sm-2">Image</th>
-                <th scope="col-sm-2">Name</th>
-                <th scope="col-sm-3">Phone</th>
-                <th scope="col-sm-3">Email</th>
-                <th scope="col-sm-2">DOB</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(this.state.searchQuery.length > 0) ? this.state.searchQuery.map((employee, index) => {
-                return (
-                  <tr key={index}>
-                    <td><img src={employee.picture.thumbnail} alt="employee headshot" /></td>
-                    <td>{`${employee.name.first} ${employee.name.last}`}</td>
-                    <td>{employee.phone}</td>
-                    <td>{employee.email}</td>
-                    <td>{moment(employee.dob.date).format('MM/DD/YYYY')}</td>
-                  </tr>
-                )
-              }) : <tr><td colSpan="5">No One here! Try using the Search bar to find an employee</td></tr>}
-            </tbody>
-          </table>
-        </div>
+        <Header />
+        <Search handleInputChange={this.handleInputChange} />
+        <table className="table">
+          <TableHeader />
+          <tbody>
+            {(this.state.searchQuery.length > 0) ? this.state.searchQuery.map((employee, index) => {
+              return (
+                <EmpTable
+                  key={index}
+                  image={employee.picture.thumbnail}
+                  name={`${employee.name.first} ${employee.name.last}`}
+                  phone={employee.phone}
+                  email={employee.email}
+                  dob={employee.dob.date}
+                />
+              )
+            }) : <tr><td colSpan="5">No One here! Try using the Search bar to find an employee</td></tr>}
+          </tbody>
+        </table>
       </>
     );
   }
