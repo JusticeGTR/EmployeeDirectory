@@ -16,8 +16,8 @@ You'll need vsCode. First use `npm init -y`, then `npm install` to include all n
 Once everything is installed, input npm start to initiate the app and look up http://localhost:3000 in your browser of choice.
 
 
-![Demonstration picture](https://github.com/JusticeGTR/EmployeeDirectory/blob/main/employeedirectory/assets/images/Screenshot%20(132).png)  
-![Demonstration picture](https://github.com/JusticeGTR/EmployeeDirectory/blob/main/employeedirectory/assets/images/Screenshot%20(133).png) 
+![Demonstration picture](https://github.com/JusticeGTR/EmployeeDirectory/blob/main/assets/images/Screenshot%20(132).png)  
+![Demonstration picture](https://github.com/JusticeGTR/EmployeeDirectory/blob/main/assets/images/Screenshot%20(133).png) 
 
 
 ## License
