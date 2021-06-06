@@ -37,9 +37,7 @@ class Main extends Component {
     });
   };
 
-  // const employee = res.data.results.map(list => )
-
-  //when I type a letter or series of letters, then filter the employees with names that include the letter(s) typed
+// const sortNames
 
 
 
